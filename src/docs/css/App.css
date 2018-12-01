@@ -1,0 +1,30 @@
+body {
+  font: menu;
+  font-size: 100%;
+  margin: 5rem auto;
+  max-width: 720px;
+  line-height: 1.7;
+  background-color: whitesmoke;
+}
+
+.hovercard {
+  border-bottom: 1px solid;
+  color: #69e;
+  cursor: help;
+}
+.hovercard-real {
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.2) !important;
+  background-color: #fff !important;
+}
+.hovercard-arrow {
+  border-bottom: 10px solid #fff !important;
+}
+
+pre {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 1rem 1.25rem;
+}
+
+.hovercard-real .hovercard-description::after {
+  background: linear-gradient(transparent, #fff) !important;
+}

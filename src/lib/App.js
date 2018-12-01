@@ -27,10 +27,12 @@ class Hovercard {
   positionHovercard(position) {
     const card = document.querySelector(".hovercard-real");
     const arrow = document.querySelector(".hovercard-arrow");
-    card.style.top = (position.top + position.height + this.padding) + "px";
-    card.style.left = position.left + "px";
-    arrow.style.top = (position.top + position.height + this.padding - 10) + "px";
-    arrow.style.left = (position.left + (position.width / 2) - 5) + "px";
+    const scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+    const scrollLeft = (window.pageXOffset !== undefined) ? window.pageXOffset : (document.documentElement || document.body.parentNode || document.body).scrollLeft;
+    card.style.top = (scrollTop + position.top + position.height + this.padding) + "px";
+    card.style.left = (scrollLeft + position.left) + "px";
+    arrow.style.top = (scrollTop + position.top + position.height + this.padding - 10) + "px";
+    arrow.style.left = (scrollLeft + position.left + (position.width / 2) - 5) + "px";
   }
   updateHovercard(data) {
     if (!(data.displaytitle && data.extract)) return;

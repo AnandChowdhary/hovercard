@@ -20,7 +20,7 @@
 
 .hovercard-arrow {
   position: absolute;
-  z-index: 14;
+  z-index: 16;
   display: none;
   content: "";
   width: 0;
