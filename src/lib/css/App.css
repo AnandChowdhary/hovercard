@@ -1,3 +1,39 @@
-body {
-  color: black;
+.hovercard-real {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  position: absolute;
+  width: 400px;
+  padding: 15px 20px;
+  display: none;
+  max-height: 200px;
+  overflow: hidden;
+}
+
+.hovercard-real.hovercard-visible {
+  display: block;
+}
+
+.hovercard-real .hovercard-title {
+  font-size: inherit;
+  margin-top: 0;
+}
+.hovercard-real .hovercard-description {
+  margin-bottom: 0;
+  max-width: 250px;
+}
+.hovercard-real .hovercard-description::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  top: 175px;
+  height: 55px;
+  background: linear-gradient(transparent, white);
+}
+.hovercard-real .hovercard-image {
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 150px;
+  background-size: cover;
+  background-position: center;
 }
