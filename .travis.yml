@@ -5,7 +5,7 @@ cache:
 notifications:
   email: false
 node_js:
-  - '11.2.0'
+  - '11.2'
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
