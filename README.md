@@ -43,3 +43,5 @@ Literally made this in a few hours. Lots to be done.
 - Polyfill for fetch? Docs if none
 - Keep cards visible on hover, not just link hover
 - Support for cards linking to article/other things
+- oEmbed like previews for other services
+- Auto detect Wikipedia links and hovercard
