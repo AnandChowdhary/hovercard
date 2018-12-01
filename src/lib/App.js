@@ -38,21 +38,26 @@ class Hovercard {
     const arrow = document.querySelector(".hovercard-arrow");
     card.innerHTML = `
       <h2 class="hovercard-title">${data.displaytitle}</h2>
-      <p class="hovercard-description">${data.extract}</p>
-      <div class="hovercard-image" style="background-image: url('${data.thumbnail.source}')"></div>
-    `;
+      <p class="hovercard-description">${data.extract}</p>`;
+    if (data.thumbnail && data.thumbnail.source) {
+      card.innerHTML += `<div class="hovercard-image" style="background-image: url('${data.thumbnail.source}')"></div>`;
+      card.classList.add("hovercard-has-image");
+    } else {
+      card.classList.remove("hovercard-has-image");
+    }
     card.classList.add("hovercard-visible");
     arrow.classList.add("hovercard-visible");
   }
   mouseOver(element) {
     this.createHovercard();
     element.classList.add("hovercard-loading");
-    cachedFetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encode(element.innerText)}`)
+    cachedFetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encode(element.getAttribute("data-hovercard-title") || element.innerText)}`)
       .then(response => {
         element.classList.add("hovercard-success");
         this.updateHovercard(response);
       })
-      .catch(() => {
+      .catch(error => {
+        console.log(error);
         element.classList.add("hovercard-error");
       })
       .then(() => {

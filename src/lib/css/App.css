@@ -6,13 +6,16 @@
   background-color: whitesmoke;
   border-radius: 5px;
   position: absolute;
-  width: 400px;
+  width: 300px;
   padding: 15px 20px;
   z-index: 15;
   display: none;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
   max-height: 200px;
   overflow: hidden;
+}
+.hovercard-real.hovercard-has-image {
+  width: 400px;
 }
 
 .hovercard-arrow {
@@ -35,9 +38,12 @@
 .hovercard-real .hovercard-title {
   font-size: inherit;
   margin-top: 0;
+  margin-bottom: 1rem;
 }
 .hovercard-real .hovercard-description {
   margin-bottom: 0;
+}
+.hovercard-real.hovercard-has-image .hovercard-description {
   max-width: 250px;
 }
 .hovercard-real .hovercard-description::after {
