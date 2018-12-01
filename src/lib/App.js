@@ -36,7 +36,6 @@ class Hovercard {
     if (!(data.displaytitle && data.extract)) return;
     const card = document.querySelector(".hovercard-real");
     const arrow = document.querySelector(".hovercard-arrow");
-    console.log(data);
     card.innerHTML = `
       <h2 class="hovercard-title">${data.displaytitle}</h2>
       <p class="hovercard-description">${data.extract}</p>
