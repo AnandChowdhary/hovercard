@@ -5,13 +5,7 @@ cache:
 notifications:
   email: false
 node_js:
-  - '9'
-after_success:
-  - yarn build && mv dist/index.html dist/200.html && echo addtocalendar.ga > dist/CNAME
-deploy:
-  provider: surge
-  project: ./dist/
-  domain: addtocalendar.ga
+  - '11.2.0'
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
