@@ -4,10 +4,11 @@ import bounding from "bounding";
 import { encode } from "wiki-article-name-encoding";
 
 class Hovercard {
-  constructor() {
+  constructor(options = {}) {
     this.elements = document.querySelectorAll(".hovercard");
     this.setup();
     this.padding = 20;
+    this.lang = options.lang || "en";
   }
   setup() {
     for (let i = 0; i < this.elements.length; i++) {
@@ -16,17 +17,17 @@ class Hovercard {
     }
   }
   createHovercard() {
-    if (document.querySelector(".hovercard-real")) return;
+    if (document.querySelector(".hovercard-element")) return;
     const card = document.createElement("div");
-    card.classList.add("hovercard-real");
+    card.classList.add("hovercard-element");
     document.body.appendChild(card);
     const arrow = document.createElement("div");
     arrow.classList.add("hovercard-arrow");
     document.body.appendChild(arrow);
   }
   positionHovercard(position) {
-    const card = document.querySelector(".hovercard-real");
-    const arrow = document.querySelector(".hovercard-arrow");
+    const card = document.querySelector(".hovercard-element"); if (!card) return;
+    const arrow = document.querySelector(".hovercard-arrow"); if (!arrow) return;
     const scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
     const scrollLeft = (window.pageXOffset !== undefined) ? window.pageXOffset : (document.documentElement || document.body.parentNode || document.body).scrollLeft;
     card.style.top = (scrollTop + position.top + position.height + this.padding) + "px";
@@ -36,8 +37,8 @@ class Hovercard {
   }
   updateHovercard(data) {
     if (!(data.displaytitle && data.extract)) return;
-    const card = document.querySelector(".hovercard-real");
-    const arrow = document.querySelector(".hovercard-arrow");
+    const card = document.querySelector(".hovercard-element"); if (!card) return;
+    const arrow = document.querySelector(".hovercard-arrow"); if (!arrow) return;
     card.innerHTML = `
       <h2 class="hovercard-title">${data.displaytitle}</h2>
       <p class="hovercard-description">${data.extract}</p>`;
@@ -53,7 +54,7 @@ class Hovercard {
   mouseOver(element) {
     this.createHovercard();
     element.classList.add("hovercard-loading");
-    cachedFetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encode(element.getAttribute("data-hovercard-title") || element.innerText)}`)
+    cachedFetch(`https://${this.lang}.wikipedia.org/api/rest_v1/page/summary/${encode(element.getAttribute("data-hovercard-title") || element.innerText)}`)
       .then(response => {
         element.classList.add("hovercard-success");
         this.updateHovercard(response);
@@ -70,8 +71,8 @@ class Hovercard {
   }
   mouseOut(element) {
     element.classList.remove("hovercard-visible");
-    const card = document.querySelector(".hovercard-real");
-    const arrow = document.querySelector(".hovercard-arrow");
+    const card = document.querySelector(".hovercard-element"); if (!card) return;
+    const arrow = document.querySelector(".hovercard-arrow"); if (!arrow) return;
     card.classList.remove("hovercard-visible");
     arrow.classList.remove("hovercard-visible");
   }

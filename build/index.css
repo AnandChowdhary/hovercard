@@ -1,6 +1,6 @@
 /*!
  * 
- *   hovercard v1.0.9
+ *   hovercard v1.1.0
  *   https://github.com/anandchowdhary/hovercard
  * 
  *   Copyright (c) Anand Chowdhary (https://github.com/anandchowdhary)
@@ -8,5 +8,5 @@
  *   This source code is licensed under the MIT license found in the
  *   LICENSE file in the root directory of this source tree.
  *   
- */.hovercard{white-space:nowrap}.hovercard-real{background-color:#f5f5f5;border-radius:5px;position:absolute;width:300px;padding:15px 20px;z-index:15;display:none;box-shadow:0 5px 10px rgba(0,0,0,.1);max-height:200px;overflow:hidden}.hovercard-real.hovercard-has-image{width:400px}.hovercard-arrow{position:absolute;z-index:16;display:none;content:"";width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-bottom:10px solid #f5f5f5}.hovercard-arrow.hovercard-visible,.hovercard-real.hovercard-visible{display:block}.hovercard-real .hovercard-title{font-size:inherit;margin-top:0;margin-bottom:1rem}.hovercard-real .hovercard-description{margin-bottom:0}.hovercard-real.hovercard-has-image .hovercard-description{max-width:250px}.hovercard-real .hovercard-description:after{content:"";position:absolute;left:0;right:0;top:175px;height:55px;background:linear-gradient(transparent,#f5f5f5)}.hovercard-real .hovercard-image{position:absolute;right:0;top:0;bottom:0;width:150px;background-size:cover;background-position:50%}
+ */.hovercard{white-space:nowrap}.hovercard-element{background-color:#f5f5f5;border-radius:5px;position:absolute;width:300px;padding:15px 20px;z-index:15;display:none;box-shadow:0 5px 10px rgba(0,0,0,.1);max-height:200px;overflow:hidden}.hovercard-element.hovercard-has-image{width:400px}.hovercard-arrow{position:absolute;z-index:16;display:none;content:"";width:0;height:0;border-left:10px solid transparent;border-right:10px solid transparent;border-bottom:10px solid #f5f5f5}.hovercard-arrow.hovercard-visible,.hovercard-element.hovercard-visible{display:block}.hovercard-element .hovercard-title{font-size:inherit;margin-top:0;margin-bottom:1rem}.hovercard-element .hovercard-description{margin-bottom:0}.hovercard-element.hovercard-has-image .hovercard-description{max-width:250px}.hovercard-element .hovercard-description:after{content:"";position:absolute;left:0;right:0;top:175px;height:55px;background:linear-gradient(transparent,#f5f5f5)}.hovercard-element .hovercard-image{position:absolute;right:0;top:0;bottom:0;width:150px;background-size:cover;background-position:50%}
 /*# sourceMappingURL=index.css.map */

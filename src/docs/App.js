@@ -3,8 +3,9 @@ import Lib from './../lib';
 
 class App {
   constructor(){
-    let libInstance = new Lib();
-    console.log("Demo loaded!", libInstance);
+    new Lib({
+      lang: "en"
+    });
   }
 }
 

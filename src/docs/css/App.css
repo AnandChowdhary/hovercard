@@ -12,7 +12,7 @@ body {
   color: #69e;
   cursor: help;
 }
-.hovercard-real {
+.hovercard-element {
   box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.2) !important;
   background-color: #fff !important;
 }
@@ -25,6 +25,16 @@ pre {
   padding: 1rem 1.25rem;
 }
 
-.hovercard-real .hovercard-description::after {
+code {
+  background-color: rgba(0, 0, 0, 0.1);
+  font-size: 101%;
+  color: #c33;
+  padding: 0.1rem 0.3rem;
+  margin: 0 0.15rem;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.hovercard-element .hovercard-description::after {
   background: linear-gradient(transparent, #fff) !important;
 }

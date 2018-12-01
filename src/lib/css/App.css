@@ -2,7 +2,7 @@
   white-space: nowrap;
 }
 
-.hovercard-real {
+.hovercard-element {
   background-color: whitesmoke;
   border-radius: 5px;
   position: absolute;
@@ -14,7 +14,7 @@
   max-height: 200px;
   overflow: hidden;
 }
-.hovercard-real.hovercard-has-image {
+.hovercard-element.hovercard-has-image {
   width: 400px;
 }
 
@@ -30,23 +30,23 @@
   border-bottom: 10px solid whitesmoke;
 }
 
-.hovercard-real.hovercard-visible,
+.hovercard-element.hovercard-visible,
 .hovercard-arrow.hovercard-visible {
   display: block;
 }
 
-.hovercard-real .hovercard-title {
+.hovercard-element .hovercard-title {
   font-size: inherit;
   margin-top: 0;
   margin-bottom: 1rem;
 }
-.hovercard-real .hovercard-description {
+.hovercard-element .hovercard-description {
   margin-bottom: 0;
 }
-.hovercard-real.hovercard-has-image .hovercard-description {
+.hovercard-element.hovercard-has-image .hovercard-description {
   max-width: 250px;
 }
-.hovercard-real .hovercard-description::after {
+.hovercard-element .hovercard-description::after {
   content: "";
   position: absolute;
   left: 0;
@@ -55,7 +55,7 @@
   height: 55px;
   background: linear-gradient(transparent, whitesmoke);
 }
-.hovercard-real .hovercard-image {
+.hovercard-element .hovercard-image {
   position: absolute;
   right: 0;
   top: 0;
