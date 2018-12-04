@@ -30,7 +30,37 @@ And add the CSS class <code>hovercard</code> on the elements you want hovercards
 <span class="hovercard">Facebook</span>
 ```
 
-## [Docs](https://anandchowdhary.github.io/hovercard/)
+### Links
+
+You can have the hovercard link to the respective Wikipedia article:
+
+```js
+new Hovercard({
+    link: "wikipedia"
+});
+```
+
+You can also have the hovercard link to the referer (the element whose hovercard this is):
+
+```html
+<a href="https://google.com" class="hovercard">Google</a>
+```
+
+```js
+new Hovercard({
+    link: "inherit"
+});
+```
+
+Finally, you can also supply a custom link for a hovercard using the `data-link` attribute:
+
+```html
+<span data-link="https://google.com" class="hovercard">Google</span>
+```
+
+I hope this is good for now! 😄 
+
+## [Demo](https://anandchowdhary.github.io/hovercard/)
 
 Literally made this in a few hours. Lots to be done.
 
