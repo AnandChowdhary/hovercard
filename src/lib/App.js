@@ -86,7 +86,7 @@ class Hovercard {
         card.classList.remove("hovercard-visible");
         arrow.classList.remove("hovercard-visible");
       }
-    }, this.settings.timeout || 100);
+    }, this.settings.timeout || 50);
   }
 }
 
