@@ -12,11 +12,11 @@ body {
   color: #69e;
   cursor: help;
 }
-.hovercard-card {
+.hovercard-element {
   box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.2) !important;
   background-color: #fff !important;
 }
-.hovercard-arrow {
+.hovercard-arrow::before {
   border-bottom: 10px solid #fff !important;
 }
 
@@ -35,6 +35,6 @@ code {
   display: inline-block;
 }
 
-.hovercard-card .hovercard-description::after {
+.hovercard-element .hovercard-description::after {
   background: linear-gradient(transparent, #fff) !important;
 }
