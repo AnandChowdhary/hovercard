@@ -11,7 +11,7 @@ console.log("Starting console logs for events!");
 	"hovercardMouseover",
 	"hovercardMouseOut"
 ].forEach(listener => {
-	window.addEventListener(listener, args => {
+	document.addEventListener(listener, args => {
 		console.log("Emitted", listener, args.detail);
 	});
 });

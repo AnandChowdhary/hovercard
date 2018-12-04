@@ -1,9 +1,9 @@
 import "./css/App.css";
 import cachedFetch from "fetch-unless-cached";
-import emit from "dom-emit";
 import bounding from "bounding";
 import { encode } from "wiki-article-name-encoding";
 
+const emit = (name, ...items) => document.dispatchEvent(new CustomEvent(name, { detail: items }));
 const hasMouseOver = domElement => domElement && domElement.parentElement.querySelector(":hover") === domElement;
 
 class Hovercard {

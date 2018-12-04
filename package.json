@@ -137,7 +137,6 @@
   },
   "dependencies": {
     "bounding": "^0.1.0",
-    "dom-emit": "^1.1.2",
     "fetch-unless-cached": "^2.0.2",
     "wiki-article-name-encoding": "^0.1.0"
   }

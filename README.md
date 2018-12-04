@@ -41,7 +41,7 @@ Literally made this in a few hours. Lots to be done.
 - Fade cards in and out, don't just display none them
 - Better loading/error states?
 - Polyfill for fetch? Docs if none
-- Keep cards visible on hover, not just link hover
-- Support for cards linking to article/other things
+- ~~Keep cards visible on hover, not just link hover~~
+- ~~Support for cards linking to article/other things~~
 - oEmbed like previews for other services
 - Auto detect Wikipedia links and hovercard
