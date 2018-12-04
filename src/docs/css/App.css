@@ -16,6 +16,9 @@ body {
   box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.2) !important;
   background-color: #fff !important;
 }
+[x-placement="top"] + .hovercard-arrow::before {
+  border-top: 10px solid #fff !important;
+}
 .hovercard-arrow::before {
   border-bottom: 10px solid #fff !important;
 }

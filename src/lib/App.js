@@ -1,6 +1,6 @@
 import "./css/App.css";
 import cachedFetch from "fetch-unless-cached";
-import bounding from "bounding";
+import Popper from "popper.js";
 import { encode } from "wiki-article-name-encoding";
 
 const emit = (name, ...items) => document.dispatchEvent(new CustomEvent(name, { detail: items }));
@@ -26,22 +26,27 @@ class Hovercard {
     document.body.appendChild(card);
     card.addEventListener("mouseout", () => this.mouseOut());
     const arrow = document.createElement("div");
+    arrow.setAttribute("x-arrow", "");
     arrow.classList.add("hovercard-arrow");
     arrow.addEventListener("mouseout", () => this.mouseOut());
     document.body.appendChild(arrow);
     emit("hovercardCreated", card);
   }
-  positionHovercard(position) {
+  positionHovercard(element) {
     const card = document.querySelector(".hovercard-element"); if (!card) return;
     const arrow = document.querySelector(".hovercard-arrow"); if (!arrow) return;
-    const scrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
-    const scrollLeft = (window.pageXOffset !== undefined) ? window.pageXOffset : (document.documentElement || document.body.parentNode || document.body).scrollLeft;
-    card.style.top = (scrollTop + position.top + position.height + this.padding) + "px";
-    card.style.left = (scrollLeft + position.left) + "px";
-    arrow.style.top = (scrollTop + position.top + position.height + this.padding - 10) + "px";
-    arrow.style.left = (scrollLeft + position.left) + "px";
-    arrow.style.paddingLeft = ((position.width / 2) - 5) + "px";
-    emit("hovercardPositioned", card, position);
+    new Popper(element, card, {
+      modifiers: {
+        offset: {
+          offset: "0, 20"
+        }
+      }
+    });
+    setTimeout(() => {
+      new Popper(card, arrow, {
+        placement: card.getAttribute("x-placement") === "top" ? "bottom" : "top"
+      });
+    }, 1);
   }
   updateHovercard(data, element) {
     if (!(data.displaytitle && data.extract)) return;
@@ -91,7 +96,7 @@ class Hovercard {
         element.classList.remove("hovercard-loading");
       });
     element.classList.add("hovercard-visible");
-    this.positionHovercard(bounding(element));
+    this.positionHovercard(element);
     emit("hovercardMouseover", element);
   }
   mouseOut(element) {

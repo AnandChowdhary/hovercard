@@ -36,7 +36,7 @@ Literally made this in a few hours. Lots to be done.
 
 **Todo:**
 - ~~Support all languages, not just English Wikipedia~~
-- Place cards better (top right, etc., not just bottom left)
+- ~~Place cards better (top right, etc., not just bottom left)~~
 - Support multiple sources (other than Wikipedia)
 - Fade cards in and out, don't just display none them
 - Better loading/error states?

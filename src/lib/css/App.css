@@ -25,7 +25,6 @@
 .hovercard-arrow {
   position: absolute;
   z-index: 17;
-  margin-top: -10px;
   height: 20px;
   width: 330px;
   box-sizing: border-box;
@@ -38,12 +37,23 @@
 .hovercard-arrow::before {
   position: absolute;
   bottom: 0;
+  left: 50%;
+  margin-left: -5px;
   content: "";
   width: 0;
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-bottom: 10px solid whitesmoke;
+}
+
+[x-placement="top"] + .hovercard-arrow::before {
+  border-bottom: none !important;
+  bottom: auto;
+  top: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid whitesmoke;
 }
 
 .hovercard-element.hovercard-visible,
