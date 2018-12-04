@@ -58,8 +58,6 @@ Finally, you can also supply a custom link for a hovercard using the `data-link`
 <span data-link="https://google.com" class="hovercard">Google</span>
 ```
 
-I hope this is good for now! 😄 
-
 ## [Demo](https://anandchowdhary.github.io/hovercard/)
 
 Literally made this in a few hours. Lots to be done.
