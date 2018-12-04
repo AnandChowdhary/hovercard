@@ -2651,6 +2651,12 @@ dom-converter@~0.2:
   dependencies:
     utila "~0.4"
 
+dom-emit@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/dom-emit/-/dom-emit-1.1.2.tgz#c83e8ec469f74fef9fa08135a020372495eb143e"
+  dependencies:
+    polyfill-custom-event "^1.0.0"
+
 dom-serializer@0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/dom-serializer/-/dom-serializer-0.1.0.tgz#073c697546ce0780ce23be4a28e293e40bc30c82"
@@ -6013,6 +6019,10 @@ pnp-webpack-plugin@1.2.0:
   resolved "https://registry.yarnpkg.com/pnp-webpack-plugin/-/pnp-webpack-plugin-1.2.0.tgz#a85338bc313b8a0469c1d8c5c5d016873be47cb2"
   dependencies:
     ts-pnp "^1.0.0"
+
+polyfill-custom-event@^1.0.0:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/polyfill-custom-event/-/polyfill-custom-event-1.0.5.tgz#30666b313c326e8af4ffefb09915c9650f3ceda0"
 
 portfinder@^1.0.9:
   version "1.0.20"

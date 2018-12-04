@@ -4,7 +4,8 @@ import Lib from './../lib';
 class App {
   constructor(){
     new Lib({
-      lang: "en"
+      lang: "en",
+      link: "wikipedia"
     });
   }
 }

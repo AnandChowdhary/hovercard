@@ -1,5 +1,6 @@
 import "./css/App.css";
 import cachedFetch from "fetch-unless-cached";
+import emit from "dom-emit";
 import bounding from "bounding";
 import { encode } from "wiki-article-name-encoding";
 
@@ -20,7 +21,7 @@ class Hovercard {
   }
   createHovercard() {
     if (document.querySelector(".hovercard-element")) return;
-    const card = document.createElement("div");
+    const card = document.createElement("a");
     card.classList.add("hovercard-element");
     document.body.appendChild(card);
     card.addEventListener("mouseout", () => this.mouseOut());
@@ -28,6 +29,7 @@ class Hovercard {
     arrow.classList.add("hovercard-arrow");
     arrow.addEventListener("mouseout", () => this.mouseOut());
     document.body.appendChild(arrow);
+    emit("hovercardCreated", card);
   }
   positionHovercard(position) {
     const card = document.querySelector(".hovercard-element"); if (!card) return;
@@ -39,8 +41,9 @@ class Hovercard {
     arrow.style.top = (scrollTop + position.top + position.height + this.padding - 10) + "px";
     arrow.style.left = (scrollLeft + position.left) + "px";
     arrow.style.paddingLeft = ((position.width / 2) - 5) + "px";
+    emit("hovercardPositioned", card, position);
   }
-  updateHovercard(data) {
+  updateHovercard(data, element) {
     if (!(data.displaytitle && data.extract)) return;
     const card = document.querySelector(".hovercard-element"); if (!card) return;
     const arrow = document.querySelector(".hovercard-arrow"); if (!arrow) return;
@@ -53,8 +56,23 @@ class Hovercard {
     } else {
       card.classList.remove("hovercard-has-image");
     }
+    card.removeAttribute("href");
+    if (this.settings.target) {
+      card.setAttribute("target", this.settings.target);
+    } else {
+      card.setAttribute("target", "_blank");
+    }
+    if (this.settings.link === "wikipedia") {
+      card.setAttribute("href", `https://${this.settings.lang || "en"}.wikipedia.org/wiki/${encode(element.getAttribute("data-hovercard-title") || element.innerText)}`);
+    } else if (this.settings.link === "inherit") {
+      card.setAttribute("href", element.getAttribute("href"));
+    }
+    if (element.getAttribute("data-link")) {
+      card.setAttribute("href", element.getAttribute("data-link"));
+    }
     card.classList.add("hovercard-visible");
     arrow.classList.add("hovercard-visible");
+    emit("hovercardUpdated", card, data, element);
   }
   mouseOver(element) {
     this.createHovercard();
@@ -62,10 +80,11 @@ class Hovercard {
     cachedFetch(`https://${this.settings.lang || "en"}.wikipedia.org/api/rest_v1/page/summary/${encode(element.getAttribute("data-hovercard-title") || element.innerText)}`)
       .then(response => {
         element.classList.add("hovercard-success");
-        this.updateHovercard(response);
+        emit("hovercardData", response);
+        this.updateHovercard(response, element);
       })
       .catch(error => {
-        console.log(error);
+        emit("hovercardError", error, element);
         element.classList.add("hovercard-error");
       })
       .then(() => {
@@ -73,6 +92,7 @@ class Hovercard {
       });
     element.classList.add("hovercard-visible");
     this.positionHovercard(bounding(element));
+    emit("hovercardMouseover", element);
   }
   mouseOut(element) {
     setTimeout(() => {
@@ -87,6 +107,7 @@ class Hovercard {
         arrow.classList.remove("hovercard-visible");
       }
     }, this.settings.timeout || 50);
+    emit("hovercardMouseOut", element);
   }
 }
 

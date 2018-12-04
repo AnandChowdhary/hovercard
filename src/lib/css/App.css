@@ -5,6 +5,8 @@
 .hovercard-element {
   position: absolute;
   display: none;
+  text-decoration: none;
+  color: inherit;
   background-color: whitesmoke;
   width: 330px;
   padding: 15px 20px;
