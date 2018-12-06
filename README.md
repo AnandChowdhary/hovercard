@@ -63,13 +63,13 @@ Finally, you can also supply a custom link for a hovercard using the `data-link`
 Literally made this in a few hours. Lots to be done.
 
 **Todo:**
-- ~~Support all languages, not just English Wikipedia~~
-- ~~Place cards better (top right, etc., not just bottom left)~~
-- Support multiple sources (other than Wikipedia)
-- Fade cards in and out, don't just display none them
-- Better loading/error states?
-- Polyfill for fetch? Docs if none
-- ~~Keep cards visible on hover, not just link hover~~
-- ~~Support for cards linking to article/other things~~
-- oEmbed like previews for other services
-- Auto detect Wikipedia links and hovercard
+- [x] Support all languages, not just English Wikipedia
+- [x] Place cards better (top right, etc., not just bottom left)
+- [x] Keep cards visible on hover, not just link hover
+- [x] Support for cards linking to article/other things
+- [ ] Support multiple sources (other than Wikipedia)
+- [ ] Fade cards in and out, don't just display none them
+- [ ] Better loading/error states?
+- [ ] Polyfill for fetch? Docs if none
+- [ ] oEmbed like previews for other services
+- [ ] Auto detect Wikipedia links and hovercard
