@@ -97,6 +97,8 @@ class Hovercard {
         this.activeElement.classList.add("hovercard-success");
         emit("hovercardData", response);
         this.updateHovercard(response);
+        this.activeElement.classList.add("hovercard-visible");
+        this.positionHovercard();
       })
       .catch(error => {
         emit("hovercardError", error, this.activeElement);
@@ -105,8 +107,6 @@ class Hovercard {
       .then(() => {
         this.activeElement.classList.remove("hovercard-loading");
       });
-    this.activeElement.classList.add("hovercard-visible");
-    this.positionHovercard();
     emit("hovercardMouseover", this.activeElement);
   }
   mouseOut() {
