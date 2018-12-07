@@ -32,7 +32,7 @@ code {
   background-color: rgba(0, 0, 0, 0.1);
   font-size: 101%;
   color: #c33;
-  padding: 0.1rem 0.3rem;
+  padding: 0.05rem 0.25rem;
   margin: 0 0.15rem;
   vertical-align: middle;
   display: inline-block;
@@ -40,4 +40,11 @@ code {
 
 .hovercard-element .hovercard-description::after {
   background: linear-gradient(transparent, #fff) !important;
+}
+
+.logo {
+  height: 3rem;
+  float: left;
+  margin-right: 1rem;
+  vertical-align: middle;
 }

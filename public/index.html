@@ -10,12 +10,16 @@
       You need to enable JavaScript to run this app.
     </noscript>
     <div id="root">
-      <h1>Hovercard</h1>
+      <h1>
+        <img class="logo" alt="Hovercard logo" src="https://anandchowdhary.com/images/open-source/hovercard/icon.png">
+        Hovercard
+      </h1>
       <p>Hovercard is a JavaScript library to get Wikipedia summary cards for terms on mouse over. It's useful in explaining concepts or to give summaries to Wikipedia links.</p>
+      <a class="github-button" href="https://github.com/AnandChowdhary/hovercard" data-size="large" data-show-count="true" aria-label="Star AnandChowdhary/hovercard on GitHub">Star</a>
       <h2>Demo</h2>
       <p><strong>Mouse over on any of the following blue labels.</strong></p>
-      <p>Google LLC is an <span class="hovercard" data-hovercard-title="United States">American</span> multinational technology company that specializes in Internet-related services and products, which include online advertising technologies, search engine, cloud computing, software, and hardware. Google was founded in 1998 by Larry Page and Sergey Brin while they were Ph.D. students at <span class="hovercard">Stanford University</span> in <span class="hovercard">California</span> Together they own about 14 percent of its shares and control 56 percent of the stockholder voting power through supervoting stock. They incorporated Google as a privately held company on September 4, 1998. An <span class="hovercard">initial public offering</span> (IPO) took place on August 19, 2004, and Google moved to its headquarters in Mountain View, California, nicknamed the <span class="hovercard">Googleplex</span>. In August 2015, Google announced plans to reorganize its various interests as a conglomerate called <span class="hovercard">Alphabet Inc.</span> Google is Alphabet's leading subsidiary and will continue to be the umbrella company for Alphabet's Internet interests. <span class="hovercard">Sundar Pichai</span> was appointed CEO of Google, replacing <span class="hovercard">Larry Page</span> who became the CEO of Alphabet.</p>
-      <p style="opacity: 0.5">Content under Creative Commons Attribution-ShareAlike License from <a href="https://en.wikipedia.org/wiki/Google" target="_blank" class="hovercard">Wikipedia</a>.</p>
+      <p>Google LLC is an <span class="hovercard" data-hovercard-title="United States">American</span> multinational technology company that specializes in Internet-related services and products, which include online advertising technologies, search engine, cloud computing, software, and hardware. Google was founded in 1998 by Larry Page and Sergey Brin while they were Ph.D. students at <span class="hovercard">Stanford University</span> in <span class="hovercard">California</span>. Together they own about 14 percent of its shares and control 56 percent of the stockholder voting power through supervoting stock. They incorporated Google as a privately held company on September 4, 1998. An <span class="hovercard">initial public offering</span> (IPO) took place on August 19, 2004, and Google moved to its headquarters in Mountain View, California, nicknamed the <span class="hovercard">Googleplex</span>. In August 2015, Google announced plans to reorganize its various interests as a conglomerate called <span class="hovercard">Alphabet Inc.</span> Google is Alphabet's leading subsidiary and will continue to be the umbrella company for Alphabet's Internet interests. <span class="hovercard">Sundar Pichai</span> was appointed CEO of Google, replacing <span class="hovercard">Larry Page</span> who became the CEO of Alphabet.</p>
+      <p style="opacity: 0.5">Content under <span class="hovercard">Creative Commons</span> Attribution-ShareAlike License from <a href="https://en.wikipedia.org/wiki/Google" target="_blank" class="hovercard">Wikipedia</a>.</p>
       <h2>Code</h2>
       <p>You can get Hovercard from NPM:</p>
       <pre>yarn add hovercard</pre>
@@ -50,7 +54,11 @@ const cards = new Hovercard({
         <tbody>
           <tr>
             <td><code>lang</code></td>
-            <td>ISO 639-1 language code for Wikipedia</td>
+            <td><span class="hovercard">ISO 639-1</span> language code for Wikipedia</td>
+          </tr>
+          <tr>
+            <td><code>link</code></td>
+            <td>What the Hovercard should link to (<code>"wikipedia"</code> or <code>"inherit"</code>)</td>
           </tr>
         </tbody>
       </table>
@@ -101,5 +109,6 @@ const cards = new Hovercard({
         </tbody>
       </table>
     </div>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
   </body>
 </html>

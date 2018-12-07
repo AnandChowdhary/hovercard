@@ -90,11 +90,11 @@ class Hovercard {
     emit("hovercardUpdated", card, data, this.activeElement);
   }
   mouseOver() {
-    if (!this.activeElement) return;
     this.createHovercard();
     this.activeElement.classList.add("hovercard-loading");
     cachedFetch(`https://${this.settings.lang || "en"}.wikipedia.org/api/rest_v1/page/summary/${encode(this.activeElement.getAttribute("data-hovercard-title") || this.activeElement.innerText)}`)
       .then(response => {
+        if (!this.activeElement) return;
         this.activeElement.classList.add("hovercard-success");
         emit("hovercardData", response);
         this.updateHovercard(response);
@@ -102,10 +102,12 @@ class Hovercard {
         this.positionHovercard();
       })
       .catch(error => {
+        if (!this.activeElement) return;
         emit("hovercardError", error, this.activeElement);
         this.activeElement.classList.add("hovercard-error");
       })
       .then(() => {
+        if (!this.activeElement) return;
         this.activeElement.classList.remove("hovercard-loading");
       });
     emit("hovercardMouseover", this.activeElement);
