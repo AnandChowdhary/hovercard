@@ -1,6 +1,7 @@
 import "./css/App.css";
 import cachedFetch from "fetch-unless-cached";
 import Popper from "popper.js";
+import debounce from "debounce";
 import { encode } from "wiki-article-name-encoding";
 
 const emit = (name, ...items) => document.dispatchEvent(new CustomEvent(name, { detail: items }));
@@ -10,13 +11,18 @@ class Hovercard {
   constructor(settings = {}) {
     this.setup();
     this.padding = 20;
+    this.activeElement = null;
     this.settings = settings;
   }
   setup() {
     this.elements = document.querySelectorAll(".hovercard");
     for (let i = 0; i < this.elements.length; i++) {
-      this.elements[i].addEventListener("mouseover", () => this.mouseOver(this.elements[i]));
-      this.elements[i].addEventListener("mouseout", () => this.mouseOut(this.elements[i]));
+      this.elements[i].addEventListener("mouseover", () => {
+        this.activeElement = this.elements[i];
+        this.mouseOver();
+      });
+      this.elements[i].addEventListener("mouseout", () => this.mouseOut());
+      this.elements[i].addEventListener("mousemove", () => debounce(this.positionHovercard, 100));
     }
   }
   createHovercard() {
@@ -25,17 +31,20 @@ class Hovercard {
     card.classList.add("hovercard-element");
     document.body.appendChild(card);
     card.addEventListener("mouseout", () => this.mouseOut());
+    card.addEventListener("mousemove", () => debounce(this.positionHovercard, 100));
     const arrow = document.createElement("div");
     arrow.setAttribute("x-arrow", "");
     arrow.classList.add("hovercard-arrow");
     arrow.addEventListener("mouseout", () => this.mouseOut());
+    arrow.addEventListener("mousemove", () => debounce(this.positionHovercard, 100));
     document.body.appendChild(arrow);
     emit("hovercardCreated", card);
   }
-  positionHovercard(element) {
+  positionHovercard() {
+    if (!this.activeElement) return;
     const card = document.querySelector(".hovercard-element"); if (!card) return;
     const arrow = document.querySelector(".hovercard-arrow"); if (!arrow) return;
-    new Popper(element, card, {
+    new Popper(this.activeElement, card, {
       modifiers: {
         offset: {
           offset: "0, 20"
@@ -48,7 +57,8 @@ class Hovercard {
       });
     }, 1);
   }
-  updateHovercard(data, element) {
+  updateHovercard(data) {
+    if (!this.activeElement) return;
     if (!(data.displaytitle && data.extract)) return;
     const card = document.querySelector(".hovercard-element"); if (!card) return;
     const arrow = document.querySelector(".hovercard-arrow"); if (!arrow) return;
@@ -68,38 +78,38 @@ class Hovercard {
       card.setAttribute("target", "_blank");
     }
     if (this.settings.link === "wikipedia") {
-      card.setAttribute("href", `https://${this.settings.lang || "en"}.wikipedia.org/wiki/${encode(element.getAttribute("data-hovercard-title") || element.innerText)}`);
+      card.setAttribute("href", `https://${this.settings.lang || "en"}.wikipedia.org/wiki/${encode(this.activeElement.getAttribute("data-hovercard-title") || this.activeElement.innerText)}`);
     } else if (this.settings.link === "inherit") {
-      card.setAttribute("href", element.getAttribute("href"));
+      card.setAttribute("href", this.activeElement.getAttribute("href"));
     }
-    if (element.getAttribute("data-link")) {
-      card.setAttribute("href", element.getAttribute("data-link"));
+    if (this.activeElement.getAttribute("data-link")) {
+      card.setAttribute("href", this.activeElement.getAttribute("data-link"));
     }
     card.classList.add("hovercard-visible");
     arrow.classList.add("hovercard-visible");
-    emit("hovercardUpdated", card, data, element);
+    emit("hovercardUpdated", card, data, this.activeElement);
   }
-  mouseOver(element) {
+  mouseOver() {
     this.createHovercard();
-    element.classList.add("hovercard-loading");
-    cachedFetch(`https://${this.settings.lang || "en"}.wikipedia.org/api/rest_v1/page/summary/${encode(element.getAttribute("data-hovercard-title") || element.innerText)}`)
+    this.activeElement.classList.add("hovercard-loading");
+    cachedFetch(`https://${this.settings.lang || "en"}.wikipedia.org/api/rest_v1/page/summary/${encode(this.activeElement.getAttribute("data-hovercard-title") || this.activeElement.innerText)}`)
       .then(response => {
-        element.classList.add("hovercard-success");
+        this.activeElement.classList.add("hovercard-success");
         emit("hovercardData", response);
-        this.updateHovercard(response, element);
+        this.updateHovercard(response);
       })
       .catch(error => {
-        emit("hovercardError", error, element);
-        element.classList.add("hovercard-error");
+        emit("hovercardError", error, this.activeElement);
+        this.activeElement.classList.add("hovercard-error");
       })
       .then(() => {
-        element.classList.remove("hovercard-loading");
+        this.activeElement.classList.remove("hovercard-loading");
       });
-    element.classList.add("hovercard-visible");
-    this.positionHovercard(element);
-    emit("hovercardMouseover", element);
+    this.activeElement.classList.add("hovercard-visible");
+    this.positionHovercard();
+    emit("hovercardMouseover", this.activeElement);
   }
-  mouseOut(element) {
+  mouseOut() {
     setTimeout(() => {
       const card = document.querySelector(".hovercard-element"); if (!card) return;
       const arrow = document.querySelector(".hovercard-arrow"); if (!arrow) return;
@@ -107,12 +117,13 @@ class Hovercard {
       for (let i = 0; i < this.elements.length; i++)
         if (hasMouseOver(this.elements[i])) hasHover = true;
       if (!hasHover) {
-        element && element.classList.remove("hovercard-visible");
+        this.activeElement && this.activeElement.classList.remove("hovercard-visible");
         card.classList.remove("hovercard-visible");
         arrow.classList.remove("hovercard-visible");
+        this.activeElement = null;
       }
     }, this.settings.timeout || 50);
-    emit("hovercardMouseOut", element);
+    emit("hovercardMouseOut", this.activeElement);
   }
 }
 

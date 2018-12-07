@@ -136,6 +136,7 @@
     ]
   },
   "dependencies": {
+    "debounce": "^1.2.0",
     "fetch-unless-cached": "^2.0.2",
     "popper.js": "^1.14.6",
     "wiki-article-name-encoding": "^0.1.0"
