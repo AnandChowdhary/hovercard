@@ -90,6 +90,7 @@ class Hovercard {
     emit("hovercardUpdated", card, data, this.activeElement);
   }
   mouseOver() {
+    if (!this.activeElement) return;
     this.createHovercard();
     this.activeElement.classList.add("hovercard-loading");
     cachedFetch(`https://${this.settings.lang || "en"}.wikipedia.org/api/rest_v1/page/summary/${encode(this.activeElement.getAttribute("data-hovercard-title") || this.activeElement.innerText)}`)
@@ -110,6 +111,7 @@ class Hovercard {
     emit("hovercardMouseover", this.activeElement);
   }
   mouseOut() {
+    if (!this.activeElement) return;
     setTimeout(() => {
       const card = document.querySelector(".hovercard-element"); if (!card) return;
       const arrow = document.querySelector(".hovercard-arrow"); if (!arrow) return;
