@@ -1,6 +1,6 @@
 /*!
  * 
- *   hovercard v1.3.0
+ *   hovercard v1.3.1
  *   https://github.com/anandchowdhary/hovercard
  * 
  *   Copyright (c) Anand Chowdhary (https://github.com/anandchowdhary)
