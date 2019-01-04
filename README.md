@@ -1,4 +1,4 @@
-# Hovercard
+# ![Hovercard](https://raw.githubusercontent.com/AnandChowdhary/hovercard/master/logo.png)
 
 Hovercard is a JavaScript library to get Wikipedia summary cards for terms on mouse over. It's useful in explaining concepts or to give summaries to Wikipedia links.
 
