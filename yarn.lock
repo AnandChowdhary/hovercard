@@ -6971,10 +6971,10 @@ react-app-polyfill@^0.1.3:
     raf "3.4.0"
     whatwg-fetch "3.0.0"
 
-react-dev-utils@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-7.0.0.tgz#b99d87aea260294bf7ea087cdbd6b099fac3eb27"
-  integrity sha512-Rlt+rbsSIrv5h3jr8Z6I0fOIts/UxpPu0nB4wxYlpO48vpdnG9tCshOJGmaYjGfNBSNhaBpisIAGhK6c8X2/kw==
+react-dev-utils@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-7.0.1.tgz#c53e759a22668ee2c0d146c24ce4bdec2b41e3c8"
+  integrity sha512-AN/RKZKHsyB2FebKSyMLOecvjuzZ54lzsLYF8wNmwwgRA3dVC4vhYsafvME7JD4q7RUB0bejqFWjOS9QtN48Zg==
   dependencies:
     "@babel/code-frame" "7.0.0"
     address "1.0.3"
@@ -6994,7 +6994,7 @@ react-dev-utils@^7.0.0:
     loader-utils "1.1.0"
     opn "5.4.0"
     pkg-up "2.0.0"
-    react-error-overlay "^5.1.1"
+    react-error-overlay "^5.1.2"
     recursive-readdir "2.2.2"
     shell-quote "1.6.1"
     sockjs-client "1.1.5"
@@ -7011,10 +7011,10 @@ react-dom@^16.7.0:
     prop-types "^15.6.2"
     scheduler "^0.12.0"
 
-react-error-overlay@^5.1.1:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.1.1.tgz#56f0439f001ff3588da0f479a86482ccb1e708cb"
-  integrity sha512-gJcOyak5ri9mzhpFObSAkCqNNBCVZE8LaR/mX37agULgSL0dobgX11NVSIetvNzhHMkr6CIqV0xiutvvcjBtkw==
+react-error-overlay@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-5.1.2.tgz#888957b884d4b25b083a82ad550f7aad96585394"
+  integrity sha512-7kEBKwU9R8fKnZJBRa5RSIfay4KJwnYvKB6gODGicUmDSAhQJ7Tdnll5S0RLtYrzRfMVXlqYw61rzrSpP4ThLQ==
 
 react@^16.7.0:
   version "16.7.0"
