@@ -4860,7 +4860,16 @@ jest-resolve-dependencies@^23.6.0:
     jest-regex-util "^23.3.0"
     jest-snapshot "^23.6.0"
 
-jest-resolve@23.6.0, jest-resolve@^23.6.0:
+jest-resolve@24.0.0:
+  version "24.0.0"
+  resolved "https://registry.yarnpkg.com/jest-resolve/-/jest-resolve-24.0.0.tgz#0206cfe842324f8796b01f706f4075309bf7b405"
+  integrity sha512-uKDGyJqNaBQKox1DJzm27CJobADsIMNgZGusXhtYzl98LKu/fKuokkRsd7EBVgoDA80HKHc3LOPKuYLryMu1vw==
+  dependencies:
+    browser-resolve "^1.11.3"
+    chalk "^2.0.1"
+    realpath-native "^1.0.0"
+
+jest-resolve@^23.6.0:
   version "23.6.0"
   resolved "https://registry.yarnpkg.com/jest-resolve/-/jest-resolve-23.6.0.tgz#cf1d1a24ce7ee7b23d661c33ba2150f3aebfa0ae"
   dependencies:
