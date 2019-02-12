@@ -6789,9 +6789,9 @@ react-app-polyfill@^0.2.1:
     raf "3.4.1"
     whatwg-fetch "3.0.0"
 
-react-dev-utils@^7.0.2:
-  version "7.0.2"
-  resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-7.0.2.tgz#0da76fd5beb6bd75b5e731eb07b8a1377be61173"
+react-dev-utils@^7.0.3:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-7.0.3.tgz#f1316cfffd792fd41b0c28ad5db86c1d74484d6f"
   dependencies:
     "@babel/code-frame" "7.0.0"
     address "1.0.3"
