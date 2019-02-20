@@ -21,7 +21,7 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "7.3.3",
-    "@babel/plugin-proposal-class-properties": "^7.3.0",
+    "@babel/plugin-proposal-class-properties": "^7.3.3",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
     "@svgr/webpack": "4.1.0",
@@ -37,7 +37,7 @@
     "css-loader": "2.1.0",
     "dotenv": "6.2.0",
     "dotenv-expand": "4.2.0",
-    "eslint": "5.13.0",
+    "eslint": "5.14.1",
     "eslint-config-react-app": "^3.0.7",
     "eslint-loader": "2.1.2",
     "eslint-plugin-flowtype": "2.50.3",
