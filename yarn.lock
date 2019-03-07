@@ -1444,9 +1444,9 @@ babel-preset-jest@^23.2.0:
     babel-plugin-jest-hoist "^23.2.0"
     babel-plugin-syntax-object-rest-spread "^6.13.0"
 
-babel-preset-react-app@^7.0.1:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/babel-preset-react-app/-/babel-preset-react-app-7.0.1.tgz#8dd7fef73fba124a6e140d245185ca657a943313"
+babel-preset-react-app@^7.0.2:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/babel-preset-react-app/-/babel-preset-react-app-7.0.2.tgz#d01ae973edc93b9f1015cb0236dd55889a584308"
   dependencies:
     "@babel/core" "7.2.2"
     "@babel/plugin-proposal-class-properties" "7.3.0"
