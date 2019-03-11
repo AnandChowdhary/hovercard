@@ -4848,9 +4848,9 @@ jest-mock@^24.3.0:
   dependencies:
     "@jest/types" "^24.3.0"
 
-jest-pnp-resolver@1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/jest-pnp-resolver/-/jest-pnp-resolver-1.0.2.tgz#470384ae9ea31f72136db52618aa4010ff23b715"
+jest-pnp-resolver@1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/jest-pnp-resolver/-/jest-pnp-resolver-1.2.1.tgz#ecdae604c077a7fbc70defb6d517c3c1c898923a"
 
 jest-regex-util@^24.3.0:
   version "24.3.0"
