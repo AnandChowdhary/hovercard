@@ -3073,9 +3073,9 @@ dot-prop@^4.1.1:
   dependencies:
     is-obj "^1.0.0"
 
-dotenv-expand@5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/dotenv-expand/-/dotenv-expand-5.0.0.tgz#3951d7ee2e35371fe6cb8e4bcdcc39db134d4a95"
+dotenv-expand@5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/dotenv-expand/-/dotenv-expand-5.1.0.tgz#3fbaf020bfd794884072ea26b1e9791d45a629f0"
 
 dotenv@6.2.0:
   version "6.2.0"
