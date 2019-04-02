@@ -4780,15 +4780,7 @@ jest-resolve-dependencies@^24.6.0:
     jest-regex-util "^24.3.0"
     jest-snapshot "^24.6.0"
 
-jest-resolve@23.6.0:
-  version "23.6.0"
-  resolved "https://registry.yarnpkg.com/jest-resolve/-/jest-resolve-23.6.0.tgz#cf1d1a24ce7ee7b23d661c33ba2150f3aebfa0ae"
-  dependencies:
-    browser-resolve "^1.11.3"
-    chalk "^2.0.1"
-    realpath-native "^1.0.0"
-
-jest-resolve@^24.6.0:
+jest-resolve@24.6.0, jest-resolve@^24.6.0:
   version "24.6.0"
   resolved "https://registry.yarnpkg.com/jest-resolve/-/jest-resolve-24.6.0.tgz#7ab8e6b274d5dac6df5c4911f0cd0af0124b44f7"
   dependencies:
@@ -7016,12 +7008,6 @@ readdirp@^2.0.0:
     graceful-fs "^4.1.11"
     micromatch "^3.1.10"
     readable-stream "^2.0.2"
-
-realpath-native@^1.0.0:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/realpath-native/-/realpath-native-1.0.2.tgz#cd51ce089b513b45cf9b1516c82989b51ccc6560"
-  dependencies:
-    util.promisify "^1.0.0"
 
 realpath-native@^1.1.0:
   version "1.1.0"
