@@ -6176,9 +6176,9 @@ pnp-webpack-plugin@1.4.1:
   dependencies:
     ts-pnp "^1.0.0"
 
-popper.js@^1.14.7:
-  version "1.14.7"
-  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.14.7.tgz#e31ec06cfac6a97a53280c3e55e4e0c860e7738e"
+popper.js@^1.15.0:
+  version "1.15.0"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.15.0.tgz#5560b99bbad7647e9faa475c6b8056621f5a4ff2"
 
 portfinder@^1.0.9:
   version "1.0.20"
