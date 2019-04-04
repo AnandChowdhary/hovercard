@@ -4844,9 +4844,9 @@ jest-resolve-dependencies@^24.7.0:
     jest-regex-util "^24.3.0"
     jest-snapshot "^24.7.0"
 
-jest-resolve@24.7.0, jest-resolve@^24.7.0:
-  version "24.7.0"
-  resolved "https://registry.yarnpkg.com/jest-resolve/-/jest-resolve-24.7.0.tgz#0b13604676131a64e4d90cd1d34296b052ebc08e"
+jest-resolve@24.7.1, jest-resolve@^24.7.0:
+  version "24.7.1"
+  resolved "https://registry.yarnpkg.com/jest-resolve/-/jest-resolve-24.7.1.tgz#e4150198299298380a75a9fd55043fa3b9b17fde"
   dependencies:
     "@jest/types" "^24.7.0"
     browser-resolve "^1.11.3"
