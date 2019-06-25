@@ -5395,9 +5395,9 @@ mime@1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.6.0.tgz#32cd9e5c64553bd58d19a568af452acff04981b1"
 
-mime@^2.0.3, mime@^2.4.2:
-  version "2.4.3"
-  resolved "https://registry.yarnpkg.com/mime/-/mime-2.4.3.tgz#229687331e86f68924e6cb59e1cdd937f18275fe"
+mime@^2.4.2, mime@^2.4.4:
+  version "2.4.4"
+  resolved "https://registry.yarnpkg.com/mime/-/mime-2.4.4.tgz#bd7b91135fc6b01cde3e9bae33d659b63d8857e5"
 
 mimic-fn@^1.0.0:
   version "1.2.0"
@@ -8316,12 +8316,12 @@ urix@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/urix/-/urix-0.1.0.tgz#da937f7a62e21fec1fd18d49b35c2935067a6c72"
 
-url-loader@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/url-loader/-/url-loader-2.0.0.tgz#600ef36f463e21bd673ad70156d850619d9cd092"
+url-loader@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/url-loader/-/url-loader-2.0.1.tgz#6c47fc7090e3d48939e01fe3c6efcba5938dcec5"
   dependencies:
     loader-utils "^1.1.0"
-    mime "^2.0.3"
+    mime "^2.4.4"
     schema-utils "^1.0.0"
 
 url-parse@^1.4.3:
