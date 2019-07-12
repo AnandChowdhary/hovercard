@@ -1853,9 +1853,9 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-bfj@7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/bfj/-/bfj-7.0.0.tgz#8cd88f775e754170e8342ffb13480bc9c6f847c4"
+bfj@7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/bfj/-/bfj-7.0.1.tgz#da7d3da7adb59124809675c984727a5a673feef9"
   dependencies:
     bluebird "^3.5.5"
     check-types "^8.0.3"
