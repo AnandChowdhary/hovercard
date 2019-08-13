@@ -3,6 +3,8 @@ export interface Settings {
   template?: (result?: TextResult) => string;
   wikipediaLanguage?: string;
   noCache?: boolean;
+  fetchEndpoint?: string;
+  fetchConfig?: any;
   storage?: {
     getItem(key: string): string;
     setItem(key: string, value: string): string;
@@ -18,4 +20,12 @@ export interface TextResult {
   heading: string;
   body: string;
   image?: string;
+}
+
+export enum Events {
+  CREATED = "created",
+  REMOVED_ELEMENT = "removed-element",
+  SHOW = "show",
+  HIDE = "hide",
+  UPDATE = "update"
 }

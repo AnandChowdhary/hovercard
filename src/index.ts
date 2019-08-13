@@ -1,8 +1,7 @@
 import TypeStart from "./typestart";
-import { random } from "./random";
 import Popper from "popper.js";
 import "./styles/index.scss";
-import { Settings, TextResult } from "./interfaces";
+import { Settings, TextResult, Events } from "./interfaces";
 import { encode } from "wiki-article-name-encoding";
 
 declare global {
@@ -83,16 +82,17 @@ export default class Hovercard extends TypeStart {
         element.addEventListener("mouseout", this.mouseOut.bind(this));
       }
     });
+    this.emitter.emit(Events.CREATED);
   }
   private removeHoverCardElement(q: string) {
     if (this.elements) {
       const elementsToRemove = this.elements.filter(e => e.innerText === q);
       elementsToRemove.forEach(e => e.classList.remove("hovercard"));
       this.elements = this.elements.filter(e => e.innerText !== q);
+      this.emitter.emit(Events.REMOVED_ELEMENT, elementsToRemove);
     }
   }
   private mouseOver(event: MouseEvent) {
-    const close = document.querySelector(".hovercard-close");
     this.isLoading = true;
     this.isVisible = true;
     if (event.target) {
@@ -106,6 +106,7 @@ export default class Hovercard extends TypeStart {
           this.removeHoverCardElement(q);
           this.mouseOut();
         });
+      this.emitter.emit(Events.SHOW, event.target as HTMLElement);
     }
   }
   private mouseOut(event?: MouseEvent | Event, ignoreHoverCheck = false) {
@@ -119,6 +120,7 @@ export default class Hovercard extends TypeStart {
   close() {
     this.isVisible = false;
     this.repositionPopper();
+    this.emitter.emit(Events.HIDE);
   }
   private updateText(result: TextResult) {
     this.popperElement.innerHTML =
@@ -130,6 +132,7 @@ export default class Hovercard extends TypeStart {
       close.removeEventListener("click", this.close.bind(this));
       close.addEventListener("click", this.close.bind(this));
     }
+    this.emitter.emit(Events.UPDATE);
   }
   private getText(data: any): TextResult {
     let heading;
@@ -160,8 +163,10 @@ export default class Hovercard extends TypeStart {
     if (typeof this.settings.getData === "function")
       result = await this.settings.getData(word);
     const fetched = await fetch(
-      `https://${this.settings.wikipediaLanguage ||
-        "en"}.wikipedia.org/api/rest_v1/page/summary/${encode(word)}`
+      this.settings.fetchEndpoint ||
+        `https://${this.settings.wikipediaLanguage ||
+          "en"}.wikipedia.org/api/rest_v1/page/summary/${encode(word)}`,
+      this.settings.fetchConfig
     );
     if (fetched.status >= 300) throw new Error(fetched.statusText);
     result = await fetched.json();
