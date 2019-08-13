@@ -1,16 +1,16 @@
 {
-  "name": "typestart",
-  "version": "3.0.1",
-  "description": "Typescript DOM library starter template",
+  "name": "hovercard",
+  "version": "2.0.0",
+  "description": "Hover summary cards for the web",
   "main": "docs/index.js",
   "module": "docs/index.js",
   "types": "docs/index.d.ts",
   "files": [
     "docs"
   ],
-  "repository": "git@github.com:AnandChowdhary/typestart.git",
+  "repository": "git@github.com:AnandChowdhary/hovercard.git",
   "author": "Anand Chowdhary <anandchowdhary@gmail.com>",
-  "license": "Unlicense",
+  "license": "MIT",
   "scripts": {
     "start": "concurrently \"yarn watch\" \"yarn watch-demo\" \"yarn serve\" \"yarn prettier-watch\"",
     "build": "webpack -p --config webpack.config.ts",

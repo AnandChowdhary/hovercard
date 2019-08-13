@@ -2,10 +2,10 @@ import TypeStart from "./typestart";
 import "./styles/index.scss";
 declare global {
     interface Window {
-        LibraryName: typeof LibraryName;
+        Hovercard: typeof Hovercard;
     }
 }
-export default class LibraryName extends TypeStart {
+export default class Hovercard extends TypeStart {
     value: string;
     constructor(el?: string);
 }
