@@ -1,1 +1,1 @@
-var typestart = new window.Typestart("strong");
+var hovercards = new window.Hovercard();

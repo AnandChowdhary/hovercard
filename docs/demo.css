@@ -1,37 +1,50 @@
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font: menu;
+  font-size: 100%;
+  margin: 5rem auto;
   max-width: 720px;
-  margin: auto;
-  line-height: 1.5;
-  padding: 2rem;
-  text-align: center;
+  line-height: 1.7;
+  background-color: whitesmoke;
 }
 
-header {
-  margin-bottom: 5rem;
+.hovercard {
+  border-bottom: 1px solid;
+  color: #69e;
+  cursor: help;
+}
+.hovercard-element {
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.2) !important;
+  background-color: #fff !important;
+}
+[x-placement="top"] + .hovercard-arrow::before {
+  border-top: 10px solid #fff !important;
+}
+.hovercard-arrow::before {
+  border-bottom: 10px solid #fff !important;
 }
 
-footer {
-  margin-top: 5rem;
+pre {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 1rem 1.25rem;
 }
 
-main {
-  border: 2px solid whitesmoke;
-  padding: 1.5rem;
-  border-radius: 0.25rem;
+code {
+  background-color: rgba(0, 0, 0, 0.1);
+  font-size: 101%;
+  color: #c33;
+  padding: 0.05rem 0.25rem;
+  margin: 0 0.15rem;
+  vertical-align: middle;
+  display: inline-block;
 }
 
-p {
-  margin: 0 0 2rem 0;
-}
-P:last-child {
-  margin-bottom: 0;
+.hovercard-element .hovercard-description::after {
+  background: linear-gradient(transparent, #fff) !important;
 }
 
-/* Library-specific styles here */
-
-strong {
-  display: block;
-  font-size: 300%;
-  font-weight: 300;
+.logo {
+  height: 3rem;
+  float: left;
+  margin-right: 1rem;
+  vertical-align: middle;
 }

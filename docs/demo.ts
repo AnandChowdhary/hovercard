@@ -1,1 +1,1 @@
-const typestart = new (<any> window).Typestart("strong");
+const hovercards = new (<any> window).Hovercard();

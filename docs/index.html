@@ -1,23 +1,116 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Typestart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Hovercard &middot; Wikipedia summary cards for the web</title>
     <link rel="stylesheet" href="demo.css">
   </head>
   <body>
-    <header>
-      <h1>Typestart</h1>
-      <p>Typescript DOM library starter template</p>
-    </header>
-    <main>
-      <p>This is your new random password:</p>
-      <p><strong id="value">loading...</strong></p>
-    </main>
-    <footer>
-      <p>Made in Enschede by Anand Chowdhary</p>
-    </footer>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <div id="root">
+      <h1>
+        <img class="logo" alt="Hovercard logo" src="https://anandchowdhary.com/images/open-source/hovercard/icon.png">
+        Hovercard
+      </h1>
+      <p>Hovercard is a JavaScript library to get Wikipedia summary cards for terms on mouse over. It's useful in explaining concepts or to give summaries to Wikipedia links.</p>
+      <a class="github-button" href="https://github.com/AnandChowdhary/hovercard" data-size="large" data-show-count="true" aria-label="Star AnandChowdhary/hovercard on GitHub">Star</a>
+      <h2>Demo</h2>
+      <p><strong>Mouse over on any of the following blue labels.</strong></p>
+      <p>Google LLC is an <span class="hovercard" data-hovercard-title="United States">American</span> multinational technology company that specializes in Internet-related services and products, which include online advertising technologies, search engine, cloud computing, software, and hardware. Google was founded in 1998 by Larry Page and Sergey Brin while they were Ph.D. students at <span class="hovercard">Stanford University</span> in <span class="hovercard">California</span>. Together they own about 14 percent of its shares and control 56 percent of the stockholder voting power through supervoting stock. They incorporated Google as a privately held company on September 4, 1998. An <span class="hovercard">initial public offering</span> (IPO) took place on August 19, 2004, and Google moved to its headquarters in Mountain View, California, nicknamed the <span class="hovercard">Googleplex</span>. In August 2015, Google announced plans to reorganize its various interests as a conglomerate called <span class="hovercard">Alphabet Inc.</span> Google is Alphabet's leading subsidiary and will continue to be the umbrella company for Alphabet's Internet interests. <span class="hovercard">Sundar Pichai</span> was appointed CEO of Google, replacing <span class="hovercard">Larry Page</span> who became the CEO of Alphabet.</p>
+      <p style="opacity: 0.5">Content under <span class="hovercard">Creative Commons</span> Attribution-ShareAlike License from <a href="https://en.wikipedia.org/wiki/Google" target="_blank" class="hovercard">Wikipedia</a>.</p>
+      <h2>Code</h2>
+      <p>You can get Hovercard from NPM:</p>
+      <pre>yarn add hovercard</pre>
+      <p>Then import and initialize it (optionally, set your Wikipedia language):</p>
+      <pre>import Hovercard from "hovercard";
+const cards = new Hovercard({
+  lang: "en" // English is default, supports <span class="hovercard" data-hovercard-title="List of Wikipedias">291 Wikipedia languages</span>
+});</pre>
+      <p>And add the CSS class <code>hovercard</code> on the elements you want hovercards for:</p>
+      <pre>&lt;span class="hovercard"&gt;Facebook&lt;/span&gt;</pre>
+      <p>This renders to: <span class="hovercard">Facebook</span></p>
+      <p>You can also customize the design of your hovercards. This page imports the Hovercard <span class="hovercard">JavaScript</span> and <span class="hovercard">CSS</span>, and has the following custom CSS:</p>
+      <pre>.hovercard {
+  border-bottom: 1px solid;
+  color: #69e;
+  cursor: help;
+}
+.hovercard-element {
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+.hovercard-arrow {
+  border-bottom: 10px solid #fff;
+}
+.hovercard-element .hovercard-description::after {
+  background: linear-gradient(transparent, #fff);
+}
+</pre>
+      <h2>API</h2>
+      <p>Hovercard supports the following initialization properties:</p>
+      <table style="width: 100%">
+        <tbody>
+          <tr>
+            <td><code>lang</code></td>
+            <td><span class="hovercard">ISO 639-1</span> language code for Wikipedia</td>
+          </tr>
+          <tr>
+            <td><code>link</code></td>
+            <td>What the Hovercard should link to (<code>"wikipedia"</code> or <code>"inherit"</code>)</td>
+          </tr>
+        </tbody>
+      </table>
+      <h2>CSS classes</h2>
+      <p>You can customize your hovercards with the following classes:</p>
+      <table style="width: 100%">
+        <tbody>
+          <tr>
+            <td><code>.hovercard</code></td>
+            <td>Class for text on which hovercard will be displayed</td>
+          </tr>
+          <tr>
+            <td><code>.hovercard-element</code></td>
+            <td>Real hovercard element that floats</td>
+          </tr>
+          <tr>
+            <td><code>.hovercard-element.hovercard-visible</code></td>
+            <td>Class added to hovercard element when it's visible</td>
+          </tr>
+          <tr>
+            <td><code>.hovercard.hovercard-visible</code></td>
+            <td>Class added to hovercard text when hovercard is visible</td>
+          </tr>
+          <tr>
+            <td><code>.hovercard-has-image </code></td>
+            <td>Class added to hovercard element when it has an image</td>
+          </tr>
+          <tr>
+            <td><code>.hovercard-title</code></td>
+            <td>Hovercard title from Wikipedia</td>
+          </tr>
+          <tr>
+            <td><code>.hovercard-description</code></td>
+            <td>Hovercard description text from Wikipedia</td>
+          </tr>
+          <tr>
+            <td><code>.hovercard-description::after</code></td>
+            <td>Bottom fading gradient for overflowing text</td>
+          </tr>
+          <tr>
+            <td><code>.hovercard-image</code></td>
+            <td>Right aligned image in the hovercard</td>
+          </tr>
+          <tr>
+            <td><code>.hovercard-arrow</code></td>
+            <td>CSS triangle arrow for hovercard direction</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
     <script src="index.js"></script>
     <script src="demo.js"></script>
   </body>
