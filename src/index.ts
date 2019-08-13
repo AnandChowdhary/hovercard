@@ -12,15 +12,17 @@ declare global {
 }
 
 const IS_MOBILE = window.innerWidth < 550;
-const TEMPLATE = /* html */ `
+const TEMPLATE = (
+  result: TextResult = { heading: "", body: "" }
+) => /* html */ `
   ${
     IS_MOBILE
       ? `<button class="hovercard-close" aria-label="Close">&times;</button>`
       : ""
   }
   <div class="hovercard-card">
-    <h3>{{ heading }}</h3>
-    <p>{{ body }}</p>
+    <h3>${result.heading}</h3>
+    <p>${result.body}</p>
   </div>
 `;
 
@@ -41,9 +43,15 @@ export default class Hovercard extends TypeStart {
     this.settings = settings || {};
     this.popperElement = document.createElement("div");
     this.popperElement.classList.add("hovercard-element");
-    if (IS_MOBILE) this.popperElement.classList.add("hovercard-mobile");
-    this.popperElement.addEventListener("mouseout", this.mouseOut.bind(this));
-    this.popperElement.innerHTML = this.settings.template || TEMPLATE;
+    if (IS_MOBILE) {
+      this.popperElement.classList.add("hovercard-mobile");
+    } else {
+      this.popperElement.addEventListener("mouseout", this.mouseOut.bind(this));
+    }
+    this.popperElement.innerHTML =
+      typeof this.settings.template === "function"
+        ? this.settings.template()
+        : TEMPLATE();
     (document.body || document.documentElement).appendChild(this.popperElement);
     this.start();
   }
@@ -59,8 +67,6 @@ export default class Hovercard extends TypeStart {
     this.elements = Array.prototype.slice.call(
       document.querySelectorAll(this.settings.selector || ".hovercard")
     );
-    const close = document.querySelector(".hovercard-close");
-    if (close) close.addEventListener("click", () => this.mouseOut());
     this.elements.forEach(element => {
       element.removeEventListener("mouseover", this.mouseOver.bind(this));
       element.removeEventListener("click", this.mouseOver.bind(this));
@@ -81,6 +87,7 @@ export default class Hovercard extends TypeStart {
     }
   }
   private mouseOver(event: MouseEvent) {
+    const close = document.querySelector(".hovercard-close");
     this.isLoading = true;
     this.isVisible = true;
     if (event.target) {
@@ -96,22 +103,28 @@ export default class Hovercard extends TypeStart {
         });
     }
   }
-  private mouseOut(event?: MouseEvent) {
-    let hasHover = hasMouseOver(this.popperElement);
-    if (this.elements) {
+  private mouseOut(event?: MouseEvent | Event, ignoreHoverCheck = false) {
+    let hasHover = !ignoreHoverCheck ? hasMouseOver(this.popperElement) : false;
+    if (!ignoreHoverCheck && this.elements) {
       for (let i = 0; i < this.elements.length; i++)
         if (hasMouseOver(this.elements[i])) hasHover = true;
     }
-    if (!hasHover) {
-      this.isVisible = false;
-      this.repositionPopper(event && (event.target as HTMLElement));
-    }
+    if (!hasHover) this.close();
   }
-  private updateText({ heading, body, image }: TextResult) {
-    this.popperElement.innerHTML = (this.settings.template || TEMPLATE)
-      .replace("{{ heading }}", heading)
-      .replace("{{ body }}", body)
-      .replace("{{ image }}", image || "");
+  close() {
+    this.isVisible = false;
+    this.repositionPopper();
+  }
+  private updateText(result: TextResult) {
+    this.popperElement.innerHTML =
+      typeof this.settings.template === "function"
+        ? this.settings.template(result)
+        : TEMPLATE(result);
+    const close = document.querySelector(".hovercard-close");
+    if (close) {
+      close.removeEventListener("click", this.close.bind(this));
+      close.addEventListener("click", this.close.bind(this));
+    }
   }
   private getText(data: any): TextResult {
     let heading;
@@ -130,6 +143,14 @@ export default class Hovercard extends TypeStart {
     return { heading, body, image };
   }
   private async getData(word: string) {
+    const slug = `hovercard-cache-${btoa(word)}`;
+    if (
+      !this.settings.noCache &&
+      (this.settings.storage || localStorage).getItem(slug)
+    )
+      return JSON.parse((this.settings.storage || localStorage).getItem(
+        slug
+      ) as string);
     let result;
     if (typeof this.settings.getData === "function")
       result = await this.settings.getData(word);
@@ -138,8 +159,13 @@ export default class Hovercard extends TypeStart {
         "en"}.wikipedia.org/api/rest_v1/page/summary/${encode(word)}`
     );
     if (fetched.status >= 300) throw new Error(fetched.statusText);
-    result = fetched.json();
+    result = await fetched.json();
     this.isLoading = false;
+    if (!this.settings.noCache)
+      (this.settings.storage || localStorage).setItem(
+        slug,
+        JSON.stringify(result)
+      );
     return result;
   }
 }

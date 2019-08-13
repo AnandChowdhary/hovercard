@@ -20,6 +20,7 @@ export default class Hovercard extends TypeStart {
     private removeHoverCardElement;
     private mouseOver;
     private mouseOut;
+    close(): void;
     private updateText;
     private getText;
     private getData;
