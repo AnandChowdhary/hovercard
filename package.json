@@ -62,6 +62,7 @@
     ]
   },
   "dependencies": {
-    "mitt": "^1.1.3"
+    "mitt": "^1.1.3",
+    "popper.js": "^1.15.0"
   }
 }
