@@ -1,0 +1,67 @@
+{
+  "name": "typestart",
+  "version": "3.0.1",
+  "description": "Typescript DOM library starter template",
+  "main": "docs/index.js",
+  "module": "docs/index.js",
+  "types": "docs/index.d.ts",
+  "files": [
+    "docs"
+  ],
+  "repository": "git@github.com:AnandChowdhary/typestart.git",
+  "author": "Anand Chowdhary <anandchowdhary@gmail.com>",
+  "license": "Unlicense",
+  "scripts": {
+    "start": "concurrently \"yarn watch\" \"yarn watch-demo\" \"yarn serve\" \"yarn prettier-watch\"",
+    "build": "webpack -p --config webpack.config.ts",
+    "build-demo": "tsc docs/demo.ts",
+    "watch": "onchange 'src/**/*.{js,jsx,ts,tsx,scss,css}' -- yarn build",
+    "watch-demo": "onchange 'docs/{demo.ts,scss,css}' -- yarn build-demo",
+    "serve": "cd docs && live-server && cd ../",
+    "test": "jest --coverage --coverageReporters=text-lcov | coveralls",
+    "test-without-coverage": "jest",
+    "prettier-watch": "onchange 'src/**/*.{js,jsx,ts,tsx,scss,css}' -- prettier --write {{changed}}"
+  },
+  "devDependencies": {
+    "@types/jest": "^24.0.5",
+    "@types/node": "^12.0.0",
+    "@types/webpack": "^4.4.24",
+    "concurrently": "^4.1.0",
+    "coveralls": "^3.0.2",
+    "css-loader": "^3.0.0",
+    "jest": "^24.1.0",
+    "live-server": "^1.2.1",
+    "node-sass": "^4.11.0",
+    "onchange": "^6.0.0",
+    "prettier": "^1.16.4",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^1.0.0",
+    "ts-jest": "^24.0.2",
+    "ts-loader": "^6.0.0",
+    "ts-node": "^8.0.2",
+    "tsc": "^1.20150623.0",
+    "typescript": "^3.3.3",
+    "webpack": "^4.29.4",
+    "webpack-cli": "^3.2.3"
+  },
+  "jest": {
+    "roots": [
+      "<rootDir>/src/",
+      "<rootDir>/tests/"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ]
+  },
+  "dependencies": {
+    "mitt": "^1.1.3"
+  }
+}
