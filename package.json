@@ -1,6 +1,6 @@
 {
   "name": "hovercard",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Hover summary cards for the web",
   "main": "docs/index.js",
   "module": "docs/index.js",
