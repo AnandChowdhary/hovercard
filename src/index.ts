@@ -3,6 +3,7 @@ import { random } from "./random";
 import Popper from "popper.js";
 import "./styles/index.scss";
 import { Settings } from "./interfaces";
+import { encode } from "wiki-article-name-encoding";
 
 declare global {
   interface Window {
@@ -31,8 +32,9 @@ const hasMouseOver = (domElement: HTMLElement) =>
 export default class Hovercard extends TypeStart {
   popperInstance?: Popper;
   popperElement: HTMLDivElement;
-  elements?: NodeListOf<HTMLElement>;
+  elements?: HTMLElement[];
   isVisible = false;
+  isLoading = false;
   settings: Settings;
   constructor(settings?: Settings) {
     super();
@@ -54,8 +56,8 @@ export default class Hovercard extends TypeStart {
     }
   }
   start() {
-    this.elements = document.querySelectorAll(
-      this.settings.selector || ".hovercard"
+    this.elements = Array.prototype.slice.call(
+      document.querySelectorAll(this.settings.selector || ".hovercard")
     );
     const close = document.querySelector(".hovercard-close");
     if (close) close.addEventListener("click", () => this.mouseOut());
@@ -71,9 +73,27 @@ export default class Hovercard extends TypeStart {
       }
     });
   }
+  private removeHoverCardElement(q: string) {
+    if (this.elements) {
+      const elementsToRemove = this.elements.filter(e => e.innerText === q);
+      elementsToRemove.forEach(e => e.classList.remove("hovercard"));
+      this.elements = this.elements.filter(e => e.innerText !== q);
+    }
+  }
   private mouseOver(event: MouseEvent) {
+    this.isLoading = true;
     this.isVisible = true;
-    if (event.target) this.repositionPopper(event.target as HTMLElement);
+    if (event.target) {
+      const element = event.target as HTMLElement;
+      this.repositionPopper(element);
+      const q = element.innerText;
+      this.getData(q)
+        .then(data => console.log("Got", data))
+        .catch(() => {
+          this.removeHoverCardElement(q);
+          this.mouseOut();
+        });
+    }
   }
   private mouseOut(event?: MouseEvent) {
     let hasHover = hasMouseOver(this.popperElement);
@@ -85,6 +105,19 @@ export default class Hovercard extends TypeStart {
       this.isVisible = false;
       this.repositionPopper(event && (event.target as HTMLElement));
     }
+  }
+  private async getData(word: string) {
+    let result;
+    if (typeof this.settings.getData === "function")
+      result = await this.settings.getData(word);
+    const fetched = await fetch(
+      `https://${this.settings.wikipediaLanguage ||
+        "en"}.wikipedia.org/api/rest_v1/page/summary/${encode(word)}`
+    );
+    if (fetched.status >= 300) throw new Error(fetched.statusText);
+    result = fetched.json();
+    this.isLoading = false;
+    return result;
   }
 }
 

@@ -10,12 +10,15 @@ declare global {
 export default class Hovercard extends TypeStart {
     popperInstance?: Popper;
     popperElement: HTMLDivElement;
-    elements?: NodeListOf<HTMLElement>;
+    elements?: HTMLElement[];
     isVisible: boolean;
+    isLoading: boolean;
     settings: Settings;
     constructor(settings?: Settings);
     private repositionPopper;
     start(): void;
+    private removeHoverCardElement;
     private mouseOver;
     private mouseOut;
+    private getData;
 }
