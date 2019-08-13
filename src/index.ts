@@ -2,7 +2,7 @@ import TypeStart from "./typestart";
 import { random } from "./random";
 import Popper from "popper.js";
 import "./styles/index.scss";
-import { Settings } from "./interfaces";
+import { Settings, TextResult } from "./interfaces";
 import { encode } from "wiki-article-name-encoding";
 
 declare global {
@@ -20,7 +20,7 @@ const TEMPLATE = /* html */ `
   }
   <div class="hovercard-card">
     <h3>{{ heading }}</h3>
-    <p>{{ text }}</p>
+    <p>{{ body }}</p>
   </div>
 `;
 
@@ -85,10 +85,11 @@ export default class Hovercard extends TypeStart {
     this.isVisible = true;
     if (event.target) {
       const element = event.target as HTMLElement;
-      this.repositionPopper(element);
       const q = element.innerText;
       this.getData(q)
-        .then(data => console.log("Got", data))
+        .then(data => this.getText(data))
+        .then(text => this.updateText(text))
+        .then(() => this.repositionPopper(element))
         .catch(() => {
           this.removeHoverCardElement(q);
           this.mouseOut();
@@ -105,6 +106,28 @@ export default class Hovercard extends TypeStart {
       this.isVisible = false;
       this.repositionPopper(event && (event.target as HTMLElement));
     }
+  }
+  private updateText({ heading, body, image }: TextResult) {
+    this.popperElement.innerHTML = (this.settings.template || TEMPLATE)
+      .replace("{{ heading }}", heading)
+      .replace("{{ body }}", body)
+      .replace("{{ image }}", image || "");
+  }
+  private getText(data: any): TextResult {
+    let heading;
+    let body;
+    let image;
+    if (typeof this.settings.getBody === "function")
+      body = this.settings.getBody(data);
+    if (typeof this.settings.getHeading === "function")
+      heading = this.settings.getHeading(data);
+    if (typeof this.settings.getImage === "function")
+      image = this.settings.getImage(data);
+    if (!heading) heading = data.displaytitle as string;
+    if (!body) body = data.extract as string;
+    if (!image && data.thumbnail && data.thumbnail.source)
+      image = data.thumbnail.source as string;
+    return { heading, body, image };
   }
   private async getData(word: string) {
     let result;
