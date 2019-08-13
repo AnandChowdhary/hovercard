@@ -4,6 +4,7 @@ body {
   margin: 5rem auto;
   max-width: 720px;
   line-height: 1.7;
+  padding: 0 2rem;
   background-color: whitesmoke;
 }
 
@@ -12,20 +13,11 @@ body {
   color: #69e;
   cursor: help;
 }
-.hovercard-element {
-  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.2) !important;
-  background-color: #fff !important;
-}
-[x-placement="top"] + .hovercard-arrow::before {
-  border-top: 10px solid #fff !important;
-}
-.hovercard-arrow::before {
-  border-bottom: 10px solid #fff !important;
-}
 
 pre {
   background-color: rgba(0, 0, 0, 0.1);
   padding: 1rem 1.25rem;
+  overflow-x: auto;
 }
 
 code {

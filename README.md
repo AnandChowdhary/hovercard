@@ -1,78 +1,93 @@
-# ![Hovercard](https://raw.githubusercontent.com/AnandChowdhary/hovercard/master/logo.png)
+# 📦 Typestart
 
-Hovercard is a JavaScript library to get Wikipedia summary cards for terms on mouse over. It's useful in explaining concepts or to give summaries to Wikipedia links.
+[![Travis CI](https://img.shields.io/travis/AnandChowdhary/typestart.svg)](https://travis-ci.org/AnandChowdhary/typestart)
+[![Coverage Status](https://coveralls.io/repos/github/AnandChowdhary/typestart/badge.svg?branch=master)](https://coveralls.io/github/AnandChowdhary/typestart?branch=master)
+[![GitHub](https://img.shields.io/github/license/anandchowdhary/typestart.svg)](https://github.com/AnandChowdhary/typestart/blob/master/LICENSE)
+![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/AnandChowdhary/typestart.svg)
+[![Minzipped size](https://img.shields.io/bundlephobia/minzip/typestart.svg)](https://www.npmjs.com/package/typestart)
 
+Typestart is a web/DOM library starter with these features:
 
-![Travis CI](https://travis-ci.org/AnandChowdhary/hovercard.svg?branch=master)
-[![GitHub](https://img.shields.io/github/license/anandchowdhary/hovercard.svg)](https://github.com/AnandChowdhary/add-to-calendar/blob/master/LICENSE)
-![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/AnandChowdhary/hovercard.svg)
-[![Made in Enschede](https://img.shields.io/badge/made%20in-Enschede-brightgreen.svg)](https://cityofenschede.com/)
+- [x] Written in Typescript
+- [x] Built-in demo with GitHub pages (`./docs/` folder)
+- [x] main/module/types in `package.json`
+- [x] Bundled as UMD (works as a module)
+- [x] Exposes `window.Library` (works with CDNs)
+- [x] Style with Sass
+- [x] Test with Jest
+- [x] Build with Travis CI
+- [x] Clean with Prettier
 
-[![NPM](https://nodei.co/npm/hovercard.png)](https://npmjs.com/package/hovercard)
+## ⭐ Getting started
 
-[![Screenshot of a Hovercard demo](https://raw.githubusercontent.com/AnandChowdhary/hovercard/master/demo.png)](https://github.com/AnandChowdhary/hovercard)
-
-You can get Hovercard from NPM:
+Clone and start your project:
 
 ```bash
-yarn add hovercard
+git clone git@github.com:AnandChowdhary/typestart
+mv typestart my-library && cd my-library
+sudo rm -r .git && git init
 ```
 
-Then import and initialize it (optionally, set your Wikipedia language):
+Find and replace "typestart" with your library name and "AnandChowdhary" with your GitHub username.
+
+### GitHub configuration
+
+Setup GitHub Pages demo by going to Settings → GitHub Pages → Source → master branch /docs folder.
+
+### Development
+
+Start development server with HMR and prettier:
+
+```bash
+yarn start
+```
+
+### Production
+
+Build a production version:
+
+```bash
+yarn build
+```
+
+## 🛠️ Using a Typestart library
+
+Install the library as a dependency:
+
+```bash
+npm install typestart
+```
+
+Or, if you're using Yarn:
+
+```bash
+yarn add typestart
+```
+
+Then import the library:
 
 ```js
-import Hovercard from "hovercard";
-const cards = new Hovercard({
-    lang: "en"
-});
+import Typestart from "typestart";
 ```
 
-And add the CSS class <code>hovercard</code> on the elements you want hovercards for:
-
-```html
-<span class="hovercard">Facebook</span>
-```
-
-### Links
-
-You can have the hovercard link to the respective Wikipedia article:
+And initialize it with an optional selector:
 
 ```js
-new Hovercard({
-    link: "wikipedia"
-});
+const typestart = new Typestart("#heading");
 ```
 
-You can also have the hovercard link to the referer (the element whose hovercard this is):
+You can also use a CDN:
 
 ```html
-<a href="https://google.com" class="hovercard">Google</a>
+<script src="https://unpkg.com/typestart"></script>
 ```
 
-```js
-new Hovercard({
-    link: "inherit"
-});
-```
+## 💡 Why another starter?
 
-Finally, you can also supply a custom link for a hovercard using the `data-link` attribute:
+I've used a bunch of different Typescript library starters, but they all have tons of boilerplate (super long build rules, scripts for releases, publishing, building, etc.) 
 
-```html
-<span data-link="https://google.com" class="hovercard">Google</span>
-```
+Typestart is—like the name suggests—a starting point.
 
-## [Demo](https://anandchowdhary.github.io/hovercard/)
+## 📝 License
 
-Literally made this in a few hours. Lots to be done.
-
-**Todo:**
-- [x] Support all languages, not just English Wikipedia
-- [x] Place cards better (top right, etc., not just bottom left)
-- [x] Keep cards visible on hover, not just link hover
-- [x] Support for cards linking to article/other things
-- [ ] Support multiple sources (other than Wikipedia)
-- [ ] Fade cards in and out, don't just display none them
-- [ ] Better loading/error states?
-- [ ] Polyfill for fetch? Docs if none
-- [ ] oEmbed like previews for other services
-- [ ] Auto detect Wikipedia links and hovercard
+Unlicense (public domain, do whatever you want)
