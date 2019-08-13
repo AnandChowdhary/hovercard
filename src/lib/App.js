@@ -59,12 +59,12 @@ class Hovercard {
   }
   updateHovercard(data) {
     if (!this.activeElement) return;
-    if (!(data.displaytitle && data.extract)) return;
+    if (!(data.displaytitle && data.extract) && typeof this.settings.getHeading !== "function") return;
     const card = document.querySelector(".hovercard-element"); if (!card) return;
     const arrow = document.querySelector(".hovercard-arrow"); if (!arrow) return;
     card.innerHTML = `
-      <h2 class="hovercard-title">${data.displaytitle}</h2>
-      <p class="hovercard-description">${data.extract}</p>`;
+      <h2 class="hovercard-title">${this.settings.getHeading !== "function" ? this.settings.getHeading(data) : data.displaytitle}</h2>
+      <p class="hovercard-description">${this.settings.getText !== "function" ? this.settings.getText(data) : data.extract}</p>`;
     if (data.thumbnail && data.thumbnail.source) {
       card.innerHTML += `<div class="hovercard-image" style="background-image: url('${data.thumbnail.source}')"></div>`;
       card.classList.add("hovercard-has-image");
@@ -91,8 +91,9 @@ class Hovercard {
   }
   mouseOver() {
     this.createHovercard();
+    const word = this.activeElement.getAttribute("data-hovercard-title") || this.activeElement.innerText;
     this.activeElement.classList.add("hovercard-loading");
-    cachedFetch(`https://${this.settings.lang || "en"}.wikipedia.org/api/rest_v1/page/summary/${encode(this.activeElement.getAttribute("data-hovercard-title") || this.activeElement.innerText)}`)
+    cachedFetch(typeof this.settings.fetchUrl === "function" ? this.settings.fetchUrl(word) : `https://${this.settings.lang || "en"}.wikipedia.org/api/rest_v1/page/summary/${encode(word)}`, this.settings.fetchConfig)
       .then(response => {
         if (!this.activeElement) return;
         this.activeElement.classList.add("hovercard-success");
