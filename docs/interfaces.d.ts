@@ -3,7 +3,7 @@ export interface Settings {
     template?: (result?: TextResult) => string;
     wikipediaLanguage?: string;
     noCache?: boolean;
-    fetchEndpoint?: string;
+    getFetchEndpoint?: (word: string) => string;
     fetchConfig?: any;
     storage?: {
         getItem(key: string): string;

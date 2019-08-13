@@ -163,9 +163,10 @@ export default class Hovercard extends TypeStart {
     if (typeof this.settings.getData === "function")
       result = await this.settings.getData(word);
     const fetched = await fetch(
-      this.settings.fetchEndpoint ||
-        `https://${this.settings.wikipediaLanguage ||
-          "en"}.wikipedia.org/api/rest_v1/page/summary/${encode(word)}`,
+      typeof this.settings.getFetchEndpoint === "function"
+        ? this.settings.getFetchEndpoint(word)
+        : `https://${this.settings.wikipediaLanguage ||
+            "en"}.wikipedia.org/api/rest_v1/page/summary/${encode(word)}`,
       this.settings.fetchConfig
     );
     if (fetched.status >= 300) throw new Error(fetched.statusText);
