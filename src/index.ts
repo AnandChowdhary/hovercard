@@ -10,8 +10,13 @@ declare global {
   }
 }
 
-const IS_MOBILE = false;
+const IS_MOBILE = window.innerWidth < 550;
 const TEMPLATE = /* html */ `
+  ${
+    IS_MOBILE
+      ? `<button class="hovercard-close" aria-label="Close">&times;</button>`
+      : ""
+  }
   <div class="hovercard-card">
     <h3>{{ heading }}</h3>
     <p>{{ text }}</p>
@@ -34,14 +39,15 @@ export default class Hovercard extends TypeStart {
     this.settings = settings || {};
     this.popperElement = document.createElement("div");
     this.popperElement.classList.add("hovercard-element");
+    if (IS_MOBILE) this.popperElement.classList.add("hovercard-mobile");
     this.popperElement.addEventListener("mouseout", this.mouseOut.bind(this));
     this.popperElement.innerHTML = this.settings.template || TEMPLATE;
     (document.body || document.documentElement).appendChild(this.popperElement);
     this.start();
   }
-  private repositionPopper(element: Element) {
+  private repositionPopper(element?: Element) {
     if (this.isVisible) {
-      new Popper(element, this.popperElement);
+      if (!IS_MOBILE && element) new Popper(element, this.popperElement);
       this.popperElement.classList.add("visible");
     } else {
       this.popperElement.classList.remove("visible");
@@ -51,18 +57,25 @@ export default class Hovercard extends TypeStart {
     this.elements = document.querySelectorAll(
       this.settings.selector || ".hovercard"
     );
+    const close = document.querySelector(".hovercard-close");
+    if (close) close.addEventListener("click", () => this.mouseOut());
     this.elements.forEach(element => {
       element.removeEventListener("mouseover", this.mouseOver.bind(this));
+      element.removeEventListener("click", this.mouseOver.bind(this));
       element.removeEventListener("mouseout", this.mouseOut.bind(this));
-      element.addEventListener("mouseover", this.mouseOver.bind(this));
-      element.addEventListener("mouseout", this.mouseOut.bind(this));
+      if (IS_MOBILE) {
+        element.addEventListener("click", this.mouseOver.bind(this));
+      } else {
+        element.addEventListener("mouseover", this.mouseOver.bind(this));
+        element.addEventListener("mouseout", this.mouseOut.bind(this));
+      }
     });
   }
   private mouseOver(event: MouseEvent) {
     this.isVisible = true;
     if (event.target) this.repositionPopper(event.target as HTMLElement);
   }
-  private mouseOut(event: MouseEvent) {
+  private mouseOut(event?: MouseEvent) {
     let hasHover = hasMouseOver(this.popperElement);
     if (this.elements) {
       for (let i = 0; i < this.elements.length; i++)
@@ -70,7 +83,7 @@ export default class Hovercard extends TypeStart {
     }
     if (!hasHover) {
       this.isVisible = false;
-      if (event.target) this.repositionPopper(event.target as HTMLElement);
+      this.repositionPopper(event && (event.target as HTMLElement));
     }
   }
 }
