@@ -1,6 +1,7 @@
 import TypeStart from "./typestart";
 import Popper from "popper.js";
 import "./styles/index.scss";
+import { Settings } from "./interfaces";
 declare global {
     interface Window {
         Hovercard: typeof Hovercard;
@@ -9,10 +10,10 @@ declare global {
 export default class Hovercard extends TypeStart {
     popperInstance?: Popper;
     popperElement: HTMLDivElement;
-    popperArrow: HTMLDivElement;
     elements?: NodeListOf<HTMLElement>;
     isVisible: boolean;
-    constructor(el?: string);
+    settings: Settings;
+    constructor(settings?: Settings);
     private repositionPopper;
     start(): void;
     private mouseOver;
