@@ -38,6 +38,9 @@
   overflow: auto;
   bottom: 0;
   max-height: 100%;
+  .hovercard-description::after {
+    display: none;
+  }
   .hovercard-card {
     border-radius: 0;
     max-height: none;
@@ -45,7 +48,7 @@
   }
 }
 
-.hovercard-element.hovercard-has-image {
+.hovercard-card.hovercard-has-image {
   width: 400px;
 }
 
@@ -57,7 +60,7 @@
   box-sizing: border-box;
   display: none;
 }
-.hovercard-element.hovercard-has-image + .hovercard-arrow {
+.hovercard-card.hovercard-has-image + .hovercard-arrow {
   width: 400px;
 }
 
@@ -102,14 +105,13 @@
 }
 
 .hovercard-element .hovercard-title {
-  font-size: inherit;
   margin-top: 0;
   margin-bottom: 1rem;
 }
 .hovercard-element .hovercard-description {
   margin-bottom: 0;
 }
-.hovercard-element.hovercard-has-image .hovercard-description {
+.hovercard-card.hovercard-has-image .hovercard-description {
   max-width: 210px;
 }
 .hovercard-element .hovercard-image {

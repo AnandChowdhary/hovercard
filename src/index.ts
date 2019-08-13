@@ -20,9 +20,14 @@ const TEMPLATE = (
       ? `<button class="hovercard-close" aria-label="Close">&times;</button>`
       : ""
   }
-  <div class="hovercard-card">
-    <h3>${result.heading}</h3>
-    <p>${result.body}</p>
+  <div class="hovercard-card${result.image ? " hovercard-has-image" : ""}">
+    <h3 class="hovercard-title">${result.heading}</h3>
+    <p class="hovercard-description">${result.body}</p>
+    ${
+      result.image
+        ? `<div class="hovercard-image" style="background-image: url('${result.image}')"></div>`
+        : ""
+    }
   </div>
 `;
 
