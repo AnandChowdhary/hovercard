@@ -64,6 +64,6 @@
   "dependencies": {
     "mitt": "^1.1.3",
     "popper.js": "^1.15.0",
-    "wiki-article-name-encoding": "^0.1.0"
+    "wiki-article-name-encoding": "^0.2.0"
   }
 }
