@@ -5332,10 +5332,10 @@ wide-align@^1.1.0:
   dependencies:
     string-width "^1.0.2 || 2"
 
-wiki-article-name-encoding@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/wiki-article-name-encoding/-/wiki-article-name-encoding-0.1.0.tgz#3b29892dc7bb63d5e66d05d3ef35fc53c07ab49b"
-  integrity sha512-JdnSBrquFCZbs19Js9RqjWGN4fWMDFpelPaB0fWoee0kJ5DjbEtg1vThxSS/MKBVAK6fgmeEJL2Orz8wqPd7LA==
+wiki-article-name-encoding@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/wiki-article-name-encoding/-/wiki-article-name-encoding-0.2.0.tgz#51f770c2bb0103717c2c227d9b553d4f1fbed645"
+  integrity sha512-PwVtjl9LPOqTslVZhyUBAJhVAus0GSKrh/gYIxB1vJaQMsn/emeNR+FI2u4K8LggezYjSFpcrB9FomJ3RCqmEQ==
   dependencies:
     filename-reserved-regex "^2.0.0"
     strict-uri-encode "^2.0.0"
