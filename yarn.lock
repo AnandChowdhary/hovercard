@@ -1470,9 +1470,9 @@ concat-stream@^1.5.0:
     typedarray "^0.0.6"
 
 concurrently@^5.0.0:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/concurrently/-/concurrently-5.0.2.tgz#4d2911018c0f15ddec34a8e668fc48dced7f3b1e"
-  integrity sha512-iUNVI6PzKO0RVXV9pHWM0khvEbELxf3XLIoChaV6hHyoIaJuxQWZiOwlNysnJX5khsfvIK66+OJqRdbYrdsR1g==
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/concurrently/-/concurrently-5.1.0.tgz#05523986ba7aaf4b58a49ddd658fab88fa783132"
+  integrity sha512-9ViZMu3OOCID3rBgU31mjBftro2chOop0G2u1olq1OuwRBVRw/GxHTg80TVJBUTJfoswMmEUeuOg1g1yu1X2dA==
   dependencies:
     chalk "^2.4.2"
     date-fns "^2.0.1"
@@ -5364,14 +5364,7 @@ supports-color@^5.3.0:
   dependencies:
     has-flag "^3.0.0"
 
-supports-color@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-7.0.0.tgz#f2392c50ab35bb3cae7beebf24d254a19f880c06"
-  integrity sha512-WRt32iTpYEZWYOpcetGm0NPeSvaebccx7hhS/5M6sAiqnhedtFCHFxkjzZlJvFNCPowiKSFGiZk5USQDFy83vQ==
-  dependencies:
-    has-flag "^4.0.0"
-
-supports-color@^7.1.0:
+supports-color@^7.0.0, supports-color@^7.1.0:
   version "7.1.0"
   resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-7.1.0.tgz#68e32591df73e25ad1c4b49108a2ec507962bfd1"
   integrity sha512-oRSIpR8pxT1Wr2FquTNnGet79b3BWljqOuoW/h4oBhxJ/HUbX5nX6JSruTkvXDCFMwDPvsaTTbvMLKZWSy0R5g==
