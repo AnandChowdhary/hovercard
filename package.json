@@ -33,7 +33,7 @@
     "live-server": "^1.2.1",
     "node-sass": "^4.11.0",
     "onchange": "^6.0.0",
-    "prettier": "^1.16.4",
+    "prettier": "^2.0.0",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0",
     "ts-jest": "^25.0.0",
