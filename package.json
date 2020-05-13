@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@types/jest": "^25.1.0",
-    "@types/node": "^13.1.0",
+    "@types/node": "^14.0.1",
     "@types/webpack": "^4.4.24",
     "concurrently": "^5.0.0",
     "coveralls": "^3.0.2",
