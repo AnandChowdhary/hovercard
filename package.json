@@ -37,7 +37,7 @@
     "sass-loader": "^9.0.1",
     "style-loader": "^1.0.0",
     "ts-jest": "^25.0.0",
-    "ts-loader": "^7.0.0",
+    "ts-loader": "^8.0.0",
     "ts-node": "^8.0.2",
     "tsc": "^1.20150623.0",
     "typescript": "^3.3.3",
