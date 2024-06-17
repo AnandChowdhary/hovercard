@@ -31,7 +31,7 @@
     "css-loader": "^5.0.0",
     "jest": "^25.1.0",
     "live-server": "^1.2.1",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "onchange": "^7.0.0",
     "prettier": "^2.0.2",
     "sass-loader": "^10.0.0",
