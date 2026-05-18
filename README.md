@@ -2,7 +2,7 @@
 
 Hovercard is a JavaScript library to get Wikipedia summary cards for terms on mouse over. It's useful in explaining concepts or to give summaries to Wikipedia links.
 
-![Travis CI](https://travis-ci.org/AnandChowdhary/hovercard.svg?branch=master)
+[![CI](https://github.com/AnandChowdhary/hovercard/actions/workflows/ci.yml/badge.svg)](https://github.com/AnandChowdhary/hovercard/actions/workflows/ci.yml)
 [![GitHub](https://img.shields.io/github/license/anandchowdhary/hovercard.svg)](https://github.com/AnandChowdhary/add-to-calendar/blob/master/LICENSE)
 ![Vulnerabilities](https://img.shields.io/snyk/vulnerabilities/github/AnandChowdhary/hovercard.svg)
 [![Made in Enschede](https://img.shields.io/badge/made%20in-Enschede-brightgreen.svg)](https://cityofenschede.com/)
