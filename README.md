@@ -11,11 +11,13 @@ Hovercard is a JavaScript library to get Wikipedia summary cards for terms on mo
 
 [![Screenshot of a Hovercard demo](https://raw.githubusercontent.com/AnandChowdhary/hovercard/master/demo.png)](https://github.com/AnandChowdhary/hovercard)
 
-You can get Hovercard from NPM:
+You can get Hovercard from NPM using Yarn:
 
 ```bash
 yarn add hovercard
 ```
+
+For local development, this repository uses the committed `yarn.lock`. Run `yarn install --frozen-lockfile` before `yarn build`; npm lockfile generation is disabled so package managers do not fight each other.
 
 Then import and initialize it (optionally, set your Wikipedia language):
 
