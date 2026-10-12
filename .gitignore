@@ -88,6 +88,9 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
+# npm lockfiles are intentionally disabled; this project uses yarn.lock.
+package-lock.json
+
 # dotenv environment variables file
 .env
 .env.test
